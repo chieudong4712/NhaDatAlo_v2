@@ -1,0 +1,13 @@
+D:\WORK\Code\SocialGoal\SocialGoal-master\source\SocialGoal.Core\bin\Debug\SocialGoal.Core.dll
+D:\WORK\Code\SocialGoal\SocialGoal-master\source\SocialGoal.Core\bin\Debug\SocialGoal.Core.pdb
+D:\WORK\Code\SocialGoal\SocialGoal-master\source\SocialGoal.Core\obj\Debug\SocialGoal.Core.csprojResolveAssemblyReference.cache
+D:\WORK\Code\SocialGoal\SocialGoal-master\source\SocialGoal.Core\obj\Debug\SocialGoal.Core.dll
+D:\WORK\Code\SocialGoal\SocialGoal-master\source\SocialGoal.Core\obj\Debug\SocialGoal.Core.pdb
+D:\OneDrive\Code\EcommerceSocial\SocialGoal-master\source\SocialGoal.Core\bin\Debug\SocialGoal.Core.dll
+D:\OneDrive\Code\EcommerceSocial\SocialGoal-master\source\SocialGoal.Core\bin\Debug\SocialGoal.Core.pdb
+D:\OneDrive\Code\EcommerceSocial\SocialGoal-master\source\SocialGoal.Core\bin\Debug\Newtonsoft.Json.dll
+D:\OneDrive\Code\EcommerceSocial\SocialGoal-master\source\SocialGoal.Core\bin\Debug\PagedList.dll
+D:\OneDrive\Code\EcommerceSocial\SocialGoal-master\source\SocialGoal.Core\bin\Debug\PagedList.xml
+D:\OneDrive\Code\EcommerceSocial\SocialGoal-master\source\SocialGoal.Core\obj\Debug\SocialGoal.Core.csprojResolveAssemblyReference.cache
+D:\OneDrive\Code\EcommerceSocial\SocialGoal-master\source\SocialGoal.Core\obj\Debug\SocialGoal.Core.dll
+D:\OneDrive\Code\EcommerceSocial\SocialGoal-master\source\SocialGoal.Core\obj\Debug\SocialGoal.Core.pdb
