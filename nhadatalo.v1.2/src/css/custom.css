@@ -1,0 +1,8 @@
+.ng-grid-acction-cell{
+	padding: 3px;
+}
+.butterbar{
+  	position: fixed;
+  	width: 100%;
+  	z-index: 2;
+}

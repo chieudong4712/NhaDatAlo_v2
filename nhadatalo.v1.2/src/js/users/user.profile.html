@@ -1,0 +1,60 @@
+<div class="cell">
+  <div class="cell-inner">
+    <div class="wrapper-lg">
+      <form name="profile_form" class="form-horizontal form-validation">
+        <div class="form-group m-b-sm">
+          <label class="col-sm-2 control-label"></label>
+          <div class="col-sm-10">
+            <img ng-model="user.avatar" alt="user.first_name" />
+            <input type="file"  ng-model="user.avatar" nv-file-select="" uploader="uploader" ng-change="upload()"/>
+          </div>
+        </div>
+        <div class="form-group m-b-sm">
+          <label class="col-sm-2 control-label" translate="user.first_name">First Name</label>
+          <div class="col-sm-10">
+            <div class="form-group">
+              <div class="col-sm-5">
+                <input type="text" ng-model="user.FirstName" class="form-control">
+              </div>
+              <div class="col-sm-7">
+                <label class="col-sm-3 control-label" translate="user.last_name">Last Name</label>
+                <div class="col-sm-9">
+                  <input type="text" ng-model="user.LastName" class="form-control">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group m-b-sm">
+          <label class="col-sm-2 control-label" translate="user.email">Email</label>
+          <div class="col-sm-10">
+            <input type="email" ng-model="user.Email" class="form-control">
+          </div>
+        </div>
+        <div class="form-group m-b-sm">
+          <label class="col-sm-2 control-label" translate="user.birthday">Birthday</label>
+          <div class="col-sm-10">
+            <div class="input-group w-md">
+              <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="user.Birthday" is-open="opened" datepicker-options="dateOptions" show-button-bar="false" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group m-b-sm">
+          <label class="col-sm-2 control-label" translate="user.about">About</label>
+          <div class="col-sm-10">
+            <textarea rows="5" ng-model="user.About" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="form-group m-b-sm">
+          <label class="col-sm-2"></label>
+          <div class="col-sm-10">
+            <button ng-click="save()" ng-disabled="profile_form.$invalid" class="btn btn-sm btn-primary" type="submit" translate="button.save">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

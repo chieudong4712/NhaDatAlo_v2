@@ -1,0 +1,69 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Add Category</h1>
+</div>
+<div class="wrapper-md">
+  <!-- toaster directive -->
+  <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <!-- / toaster directive -->
+
+  <div class="panel panel-default">
+    <div class="panel-heading font-bold">
+      <div class="row clearfix">
+        <div class="col-md-6">
+        Add Category
+        </div>
+        <div class="col-md-6 text-right">
+            <a class="btn btn-xs btn-success" ng-click="reset()">
+              <span><i class="glyphicon glyphicon-plus">
+                </i>Add Category</span>
+            </a>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <form novalidate name="category_form" class="form-horizontal form-validation">
+        
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Title</label>
+          <div class="col-sm-10">
+            <input ng-model="category.Title" type="text" name="title" class="form-control" required>
+            <span class="help-block m-b-none">Title is a category name.</span>
+          </div>
+        </div>   
+
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-10">
+            <textarea name="description" class="form-control" ng-model="category.Description" cols="30" rows="10"></textarea>
+            <span class="help-block m-b-none">Description is a category name.</span>
+          </div>
+        </div>   
+
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Parent</label>
+          <div class="col-sm-10">
+            <select name="parentId" ng-model="category.Parent" ng-options="item as item.Text for item in parents track by item.Value" class="form-control">
+              <option value=""> </option>
+            </select>
+          </div>
+        </div>
+        
+        
+
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <div class="form-group">
+          <div class="col-sm-4 col-sm-offset-2">
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="submit" ng-disabled="category_form.$invalid" ng-click="save(category)" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+</div>

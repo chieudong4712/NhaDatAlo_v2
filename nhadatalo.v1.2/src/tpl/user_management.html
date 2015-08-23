@@ -1,0 +1,92 @@
+<!-- navbar -->
+<div data-ng-include=" 'tpl/blocks/header.html' " class="app-header navbar">
+</div>
+<!-- / navbar -->
+
+<!-- menu -->
+<div data-ng-include=" 'tpl/blocks/aside.html' " class="app-aside hidden-xs {{app.settings.asideColor}}" ng-class="{'hide': app.hideAside }">
+</div>
+<!-- / menu -->
+
+<!-- view -->
+<div class="app-content" ng-class="{'m-n': app.hideAside, 'h-full': app.hideFooter }">
+  <div class="app-content-body app-content-full fade-in-up" ng-class="{'h-full': app.hideFooter }" >
+    <!-- hbox layout -->
+    <div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+      app.settings.asideFixed = true;
+      app.settings.asideDock = false;
+      app.settings.container = false;
+      app.hideAside = false;
+      app.hideFooter = true;
+      "> 
+      <!--ng-controller="UserProfileController">-->
+
+      <!-- column -->
+      <div class="col w b-r">
+        <div class="vbox">
+          <div class="row-row">
+            <div class="cell scrollable hover">
+              <div class="cell-inner">
+
+                <div class="list-group no-radius no-border no-bg m-b-none">
+                  <a class="focus list-group-item b-b" >
+                    {{'user_management.nav.general.general_account_settings' | translate}}
+                  </a>
+                  <a ui-sref-active="focus" ui-sref="settings.profile" class="list-group-item p-l hover-anchor b-a no-select" >
+                    <span class="block" ng-class="{'m-n': item.selected }">
+                      {{'user_management.nav.general.profile' | translate}}
+                    </span>
+                  </a>
+                  <a ui-sref-active="focus" ui-sref="settings.contact" class="list-group-item p-l hover-anchor b-a no-select" >
+                    <span class="block" ng-class="{'m-n': item.selected }">
+                      {{'user_management.nav.general.contact' | translate}}
+                    </span>
+                  </a>
+                  <a ui-sref-active="focus" ui-sref="settings.password" class="list-group-item p-l hover-anchor b-a no-select" >
+                    <span class="block" ng-class="{'m-n': item.selected }">
+                      {{'user_management.nav.general.password' | translate}}
+                    </span>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="wrapper b-t">
+            <span tooltip="Double click to Edit" class="pull-right text-muted inline wrapper-xs m-r-sm"><i class="fa fa-question"></i></span>
+            <a href class="btn btn-sm btn-default" ng-click="createGroup()"><i class="fa fa-plus fa-fw m-r-xs"></i> New Group</a>
+          </div>
+        </div>
+      </div>
+      <!-- /column -->
+     
+
+      <!-- column -->
+      <div class="col bg-white-only">
+        <div class="vbox">
+          <div class="wrapper-sm b-b">
+            <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
+              <a class="btn btn-xs btn-default pull-right" ng-hide="!item" ng-click="deleteItem(item)"><i class="fa fa-times"></i></a>
+              <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="editItem(item)">Edit</a>
+              <a class="btn btn-xs btn-default" ng-show="item.editing" ng-click="doneEditing(item)">Done</a>
+            </div>
+          </div>
+          <div class="row-row" ui-view>
+            
+          </div>
+        </div>
+      </div>
+      <!-- /column -->
+    </div>
+    <!-- /hbox layout -->
+  </div>
+</div>
+<!-- / view -->
+<!-- navbar -->
+<div class="app-footer navbar navbar-fixed-bottom bg-light lt b-t" ng-class="{'m-n': app.hideAside, 'hide': app.hideFooter}" ui-view="footer">
+  
+</div>
+<!-- /navbar -->
+
+
+

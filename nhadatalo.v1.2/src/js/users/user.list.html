@@ -1,0 +1,45 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">User management</h1>
+</div>
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Users
+        </div>
+        <div class="row wrapper">
+            <div class="col-sm-5 m-b-xs">
+                <a class="btn btn-sm btn-success" ui-sref="management.users.edit">
+                  <span><i class="glyphicon glyphicon-plus">
+                    </i>Add User</span>
+                </a>
+              <!--   <button class="btn btn-sm btn-success" ng-click="addRandomItem(row)" type="button">
+                    <i class="glyphicon glyphicon-plus">
+                    </i> Add random item
+                </button> -->
+                <select ng-model="gridSelectedAction" ng-options="option.name for option in gridOptions.gridActions" class="input-sm form-control w-sm inline v-middle">
+                </select>
+                <button class="btn btn-sm btn-default" ng-click="gridApply()">Apply</button>
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="text" ng-model="gridOptions.filterOptions.filterText" class="input-sm form-control" placeholder="Search">
+                    <span class="input-group-btn">
+						<button class="btn btn-sm btn-default" type="button">Go!</button>
+					</span>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <div ng-grid="gridSettings" class="table table-striped b-t b-light" style="min-height:420px"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- dragging multiple rows image (must be hidden some how) -->
+<div id="dragIconMultiRows">
+  <i class="glyphicon glyphicon-file"></i>
+  <span class="badge">{{dragRowNum}}</span>
+</div>
