@@ -21,9 +21,6 @@ namespace ResourceMetadata.API.Mappers
 
         protected override void Configure()
         {
-            Mapper.CreateMap<ApplicationUser, UserProfileViewModel>();
-            Mapper.CreateMap<ApplicationUser, UserViewModel>();
-            Mapper.CreateMap<UserProfile, UserProfileViewModel>();
             Mapper.CreateMap<Resource, ResourceViewModel>();
             Mapper.CreateMap<Location, LocationViewModel>();
             Mapper.CreateMap<Setting, SettingViewModel>();
@@ -31,6 +28,7 @@ namespace ResourceMetadata.API.Mappers
             Mapper.CreateMap<ResourceActivity,ResourceActivityViewModel>()
                 .ForMember(vm => vm.ActivityDateString, dm=> dm.MapFrom(dModel => dModel.ActivityDate.ToLongDateString()));
             Mapper.CreateMap<ApplicationUser, RegisterViewModel>();
+            Mapper.CreateMap<ApplicationUser, UserViewModel>();
         }
     }
 }

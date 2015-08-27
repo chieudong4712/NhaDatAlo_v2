@@ -83,7 +83,6 @@
     <Compile Include="Repositories\ResourceActivityRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\SettingRepository.cs" />
-    <Compile Include="Repositories\UserProfileRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ResourceManagerContext.cs" />
   </ItemGroup>

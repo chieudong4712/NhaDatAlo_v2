@@ -1,5 +1,5 @@
-app.controller('UserSettingController', ['$scope', '$http', '$filter', 'userService', 'userProfileService','FileUploader', 'data', 
-	function($scope, $http, $filter, userService, userProfileService, FileUploader, data) {
+app.controller('UserSettingController', ['$scope', '$http', '$filter','toaster', '$translate', 'userService', 'userProfileService','FileUploader', 'data', 
+	function($scope, $http, $filter ,toaster ,translate, userService, userProfileService, FileUploader, data) {
 	
 
 	//VARIABLES
@@ -32,9 +32,9 @@ app.controller('UserSettingController', ['$scope', '$http', '$filter', 'userServ
     	
 
     	req.$promise.then(
-    		function(){
+    		function(rep){
     			angular.element('.butterbar').addClass('hide').removeClass('active');
-	    		self.$state.go('management.settings.list');
+	    		toaster.pop('success', translate.instant('notification.update_success_title'), translate.instant('user.messages.setting_success_content'));
 	    	}, 
 	    	function(rep){
 	    		angular.element('.butterbar').addClass('hide').removeClass('active');

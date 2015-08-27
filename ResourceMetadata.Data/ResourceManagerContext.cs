@@ -25,7 +25,6 @@ namespace ResourceMetadata.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<UserProfile> UserProfile { get; set; }
 
         //public DbSet<User> Users { get; set; }
 
@@ -74,13 +73,11 @@ namespace ResourceMetadata.Data
 
                 if (userResult.Succeeded)
                 {
-                    //var user = userManager.FindByName("admin@marlabs.com");
                     userManager.AddToRole<ApplicationUser>(user.Id, "Admin");
                 }
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
 

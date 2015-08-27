@@ -14,6 +14,7 @@ using Autofac.Integration.WebApi;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ResourceMetadata.Data;
 using ResourceMetadata.API.Controllers;
+using System.Reflection;
 
 namespace ResourceMetadata.API.App_Start
 {
@@ -37,20 +38,7 @@ namespace ResourceMetadata.API.App_Start
             containerBuilder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>().AsImplementedInterfaces().InstancePerApiRequest();
             containerBuilder.RegisterType<UnitOfWork>().As<IUnitOfWork>().AsImplementedInterfaces().InstancePerApiRequest();
             containerBuilder.RegisterType<WebWorkContext>().As<IWorkContext>().AsImplementedInterfaces().InstancePerApiRequest();
-
-            //containerBuilder.RegisterType<ResourceRepository>().As<IResourceRepository>().AsImplementedInterfaces().InstancePerApiRequest();
-            //containerBuilder.RegisterType<ResourceActivityRepository>().As<IResourceActivityRepository>().InstancePerApiRequest();
-            //containerBuilder.RegisterType<LocationRepository>().As<ILocationRepository>().InstancePerApiRequest();
-            //containerBuilder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerApiRequest();
-            //containerBuilder.RegisterType<SettingRepository>().As<ISettingRepository>().InstancePerApiRequest();
-
-            //containerBuilder.RegisterType<ResourceService>().As<IResourceService>().InstancePerApiRequest();
-            //containerBuilder.RegisterType<ResourceActivityService>().As<IResourceActivityService>().InstancePerApiRequest();
-            //containerBuilder.RegisterType<LocationService>().As<ILocationService>().InstancePerApiRequest();
-            //containerBuilder.RegisterType<UserService>().As<IUserService>().InstancePerApiRequest();
-            //containerBuilder.RegisterType<SettingService>().As<ISettingService>().InstancePerApiRequest();
-
-            containerBuilder.RegisterAssemblyTypes(typeof(UserService).Assembly).Where(t => t.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerApiRequest();
+            containerBuilder.RegisterAssemblyTypes(typeof(UserService).Assembly).Where(t => t.Name.EndsWith("Service")).AsSelf().AsImplementedInterfaces().InstancePerApiRequest();
             containerBuilder.RegisterAssemblyTypes(typeof(UserRepository).Assembly).Where(t => t.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerApiRequest();
 
             containerBuilder.Register(c => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ResourceManagerEntities())

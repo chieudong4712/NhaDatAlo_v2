@@ -54,7 +54,6 @@
     <Compile Include="ResourceActivityService.cs" />
     <Compile Include="ResourceService.cs" />
     <Compile Include="SettingService.cs" />
-    <Compile Include="UserProfileService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

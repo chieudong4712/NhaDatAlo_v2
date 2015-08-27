@@ -73,7 +73,6 @@
     <Compile Include="SearchModels\SettingSE.cs" />
     <Compile Include="Setting.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UserProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ResourceMetadata.Core\ResourceMetadata.Core.csproj">

@@ -13,7 +13,7 @@ namespace ResourceMetadata.Service
     {
         private readonly IUserRepository userRepository;
         private readonly IUnitOfWork unitOfWork;
-        public UserService(IUserRepository userRepository,IUnitOfWork unitOfWork)
+        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
             this.userRepository = userRepository;
             this.unitOfWork = unitOfWork;
@@ -26,7 +26,7 @@ namespace ResourceMetadata.Service
 
         public ApplicationUser RegisterUser(ApplicationUser user)
         {
-            user =userRepository.Add(user);
+            user = userRepository.Add(user);
             SaveChanges();
             return user;
         }

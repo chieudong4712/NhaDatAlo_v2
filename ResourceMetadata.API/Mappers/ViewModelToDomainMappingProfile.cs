@@ -23,15 +23,15 @@ namespace ResourceMetadata.API.Mappers
             Mapper.CreateMap<ResourceViewModel, Resource>()
                 .ForMember(resource => resource.Activities, vm => vm.Ignore())
                 .ForMember(resource => resource.UserId, vm => vm.Ignore());
-
+            
             Mapper.CreateMap<SettingViewModel, Setting>();
-            Mapper.CreateMap<UserProfileViewModel, UserProfile>();
-            Mapper.CreateMap<UserProfileViewModel, ApplicationUser>();
             Mapper.CreateMap<CategoryViewModel, Category>();
             Mapper.CreateMap<LocationViewModel, Location>();
             Mapper.CreateMap<ResourceActivityViewModel, ResourceActivity>();
             Mapper.CreateMap<RegisterViewModel, ApplicationUser>();
             Mapper.CreateMap<RegisterViewModel, ApplicationUser>().ForMember(user => user.UserName, vm => vm.MapFrom(rm => rm.Email));
+            Mapper.CreateMap<UserViewModel, ApplicationUser>();
+             //   .ForAllMembers(opt => opt.Condition(src => !src.IsSourceValueNull));
         }
     }
 }

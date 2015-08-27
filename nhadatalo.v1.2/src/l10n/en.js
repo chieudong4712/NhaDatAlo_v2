@@ -1,5 +1,7 @@
 {
-
+    "notification": {
+        "update_success_title": "Update successful"
+    },
     "header": {
         "navbar": {
             "UPLOAD": "Upload",
@@ -94,7 +96,10 @@
         "district": "District",
         "street": "Street",
         "address": "Address",
-        "about": "About"
+        "about": "About",
+        "messages":{
+            "setting_success_content": "Your contact has been successfully updated."
+        }
     },
     "button": {
         "save": "Save",

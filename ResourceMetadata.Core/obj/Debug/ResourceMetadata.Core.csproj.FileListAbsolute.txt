@@ -13,3 +13,12 @@ C:\Users\SoHai\Desktop\BIN\ResourceMetadata\ResourceMetadata.Core\bin\Debug\Newt
 C:\Users\SoHai\Desktop\BIN\ResourceMetadata\ResourceMetadata.Core\bin\Debug\System.Web.Mvc.xml
 C:\Users\SoHai\Desktop\BIN\ResourceMetadata\ResourceMetadata.Core\obj\Debug\ResourceMetadata.Core.dll
 C:\Users\SoHai\Desktop\BIN\ResourceMetadata\ResourceMetadata.Core\obj\Debug\ResourceMetadata.Core.pdb
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.Core\bin\Debug\ResourceMetadata.Core.dll
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.Core\bin\Debug\ResourceMetadata.Core.pdb
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.Core\bin\Debug\Newtonsoft.Json.dll
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.Core\bin\Debug\System.Web.Mvc.dll
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.Core\bin\Debug\Newtonsoft.Json.xml
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.Core\bin\Debug\System.Web.Mvc.xml
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.Core\obj\Debug\ResourceMetadata.Core.csprojResolveAssemblyReference.cache
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.Core\obj\Debug\ResourceMetadata.Core.dll
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.Core\obj\Debug\ResourceMetadata.Core.pdb

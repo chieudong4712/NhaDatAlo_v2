@@ -18,7 +18,6 @@ namespace ResourceMetadata.API.Controllers
     {
 
         private readonly IUserService userService;
-
         private readonly UserManager<ApplicationUser> userManager;
         private IAuthenticationManager AuthenticationManager
         {
@@ -55,7 +54,7 @@ namespace ResourceMetadata.API.Controllers
 
                     if (identityResult.Succeeded)
                     {
-                        userManager.AddToRole(user.Id, "Member");
+                        await userManager.AddToRoleAsync(user.Id, "Member");
                         return Ok();
                     }
                     else
@@ -80,6 +79,43 @@ namespace ResourceMetadata.API.Controllers
             }
 
         }
+
+        #region profile methods
+        public IHttpActionResult GetProfile()
+        {
+            try
+            {
+                string userEmail = RequestContext.Principal.Identity.Name;
+                var user = userManager.FindByName(userEmail);
+
+                var model = new UserViewModel();
+
+                Mapper.Map(user, model);
+
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+
+        }
+
+        [HttpPost]
+        [Route("api/Account/UpdateProfile")]
+        public IHttpActionResult UpdateProfile(UserViewModel model)
+        {
+
+            string userEmail = RequestContext.Principal.Identity.Name;
+            var user = userManager.FindByName(userEmail);
+            Mapper.Map(model, user);
+
+            userManager.Update(user);
+            return Ok();
+            
+        } 
+        #endregion
 
         #region Private methods
         #region SignInAsync
