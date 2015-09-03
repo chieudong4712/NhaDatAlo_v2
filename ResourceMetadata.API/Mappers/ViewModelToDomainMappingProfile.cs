@@ -25,6 +25,7 @@ namespace ResourceMetadata.API.Mappers
                 .ForMember(resource => resource.UserId, vm => vm.Ignore());
             
             Mapper.CreateMap<SettingViewModel, Setting>();
+            Mapper.CreateMap<PictureViewModel, Picture>();
             Mapper.CreateMap<CategoryViewModel, Category>();
             Mapper.CreateMap<LocationViewModel, Location>();
             Mapper.CreateMap<ResourceActivityViewModel, ResourceActivity>();

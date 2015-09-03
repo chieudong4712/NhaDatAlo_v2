@@ -24,6 +24,7 @@ namespace ResourceMetadata.API.Mappers
             Mapper.CreateMap<Resource, ResourceViewModel>();
             Mapper.CreateMap<Location, LocationViewModel>();
             Mapper.CreateMap<Setting, SettingViewModel>();
+            Mapper.CreateMap<Picture, PictureViewModel>();
             Mapper.CreateMap<Category, CategoryViewModel>();
             Mapper.CreateMap<ResourceActivity,ResourceActivityViewModel>()
                 .ForMember(vm => vm.ActivityDateString, dm=> dm.MapFrom(dModel => dModel.ActivityDate.ToLongDateString()));

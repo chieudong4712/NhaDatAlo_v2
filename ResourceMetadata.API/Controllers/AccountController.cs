@@ -114,6 +114,49 @@ namespace ResourceMetadata.API.Controllers
             userManager.Update(user);
             return Ok();
             
+        }
+
+        [HttpPost]
+        [Route("api/Account/ChangePassword")]
+        public IHttpActionResult ChangePassword(ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    string userEmail = RequestContext.Principal.Identity.Name;
+                    var userId = RequestContext.Principal.Identity.GetUserId();
+                    var identityResult = userManager.ChangePassword(userId, model.OldPassword, model.NewPassword);
+
+
+                    if (identityResult.Succeeded)
+                    {
+                        return Ok();
+                    }
+                    else
+                    {
+                        foreach (var error in identityResult.Errors)
+                        {
+                            ModelState.AddModelError(error, error);
+                        }
+
+                        return BadRequest(ModelState);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+
+            
+            
+
         } 
         #endregion
 

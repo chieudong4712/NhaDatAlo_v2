@@ -1,10 +1,11 @@
-﻿using ResourceMetadata.Core.Common;
-using ResourceMetadata.Model.Base;
-using ResourceMetadata.Model.Base;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace ResourceMetadata.Model
+namespace ResourceMetadata.API.ViewModels
 {
-    public class Picture: BaseEntity
+    public class PictureViewModel
     {
         public string Title { get; set; }
 
@@ -18,16 +19,8 @@ namespace ResourceMetadata.Model
         public string PictureType { get; set; }
 
         public int OrderNumber { get; set; }
-        /// <summary>
-        /// Reference Table Name
-        /// </summary>
+
         public string RefType { get; set; }
         public long RefId { get; set; }
-
-        public Picture() 
-        {
- 
-        }
-
     }
 }

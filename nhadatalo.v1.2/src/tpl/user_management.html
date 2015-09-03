@@ -42,7 +42,7 @@
                       {{'user_management.nav.general.contact' | translate}}
                     </span>
                   </a>
-                  <a ui-sref-active="focus" ui-sref="settings.password" class="list-group-item p-l hover-anchor b-a no-select" >
+                  <a ui-sref-active="focus" ui-sref="settings.changePassword" class="list-group-item p-l hover-anchor b-a no-select" >
                     <span class="block" ng-class="{'m-n': item.selected }">
                       {{'user_management.nav.general.password' | translate}}
                     </span>
@@ -90,3 +90,6 @@
 
 
 
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

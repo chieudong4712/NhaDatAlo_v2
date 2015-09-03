@@ -817,68 +817,104 @@ angular.module('app')
 
                 //Layout ================================================================================
                 .state('settings', {
-                        abstract: true,
-                        url: '/settings',
-                        templateUrl: 'tpl/user_management.html'
-                    })
-                    .state('settings.profile', {
-                        url: '/profile',
-                        templateUrl: 'js/users/user.profile.html',
-                        controller: 'UserSettingController',
-                        resolve: {
-                            deps: ['$ocLazyLoad',
-                                function($ocLazyLoad) {
-                                    return $ocLazyLoad.load('angularFileUpload').then(
-                                        function() {
-                                            return $ocLazyLoad.load([
-                                                'js/users/user.service.js',
-                                                'js/users/user.setting.controller.js'
-                                            ]);
-                                        }
-                                    );
-                                }
-                            ],
-                            data: ['$resource', 'serviceHelperSvc', function($resource, serviceHelper) {
-                                var resource = $resource(serviceHelper.buildUrl('api/account/getProfile'), null, {
-                                    getProfile: {
-                                        url: serviceHelper.buildUrl("api/Account/getProfile"),
-                                        method: 'get'
+                    abstract: true,
+                    url: '/settings',
+                    templateUrl: 'tpl/user_management.html',
+                    resolve: {
+                        deps: ['$ocLazyLoad',
+                            function($ocLazyLoad) {
+                                return $ocLazyLoad.load('toaster');
+                            }
+                        ],
+                    }
+                })
+                .state('settings.profile', {
+                    url: '/profile',
+                    templateUrl: 'js/users/user.profile.html',
+                    controller: 'UserSettingController',
+                    resolve: {
+                        deps: ['$ocLazyLoad',
+                            function($ocLazyLoad) {
+                                return $ocLazyLoad.load('angularFileUpload').then(
+                                    function() {
+                                        return $ocLazyLoad.load([
+                                            'js/users/user.service.js',
+                                            'js/users/user.setting.controller.js'
+                                        ]);
                                     }
-                                });
-                                var data = resource.getProfile();
-                                return data.$promise;
-                            }]
-                        }
-                    })
-                    .state('settings.contact', {
-                        url: '/contact',
-                        templateUrl: 'js/users/user.contact.html',
-                        controller: 'UserSettingController',
-                        resolve: {
-                            deps: ['$ocLazyLoad',
-                                function($ocLazyLoad) {
-                                    return $ocLazyLoad.load('angularFileUpload').then(
-                                        function() {
-                                            return $ocLazyLoad.load([
-                                                'js/users/user.service.js',
-                                                'js/users/user.setting.controller.js'
-                                            ]);
-                                        }
-                                    );
+                                );
+                            }
+                        ],
+                        data: ['$resource', 'serviceHelperSvc', function($resource, serviceHelper) {
+                            var resource = $resource(serviceHelper.buildUrl('api/account/getProfile'), null, {
+                                getProfile: {
+                                    url: serviceHelper.buildUrl("api/Account/getProfile"),
+                                    method: 'get'
                                 }
-                            ],
-                            data: ['$resource', 'serviceHelperSvc', function($resource, serviceHelper) {
-                                var resource = $resource(serviceHelper.buildUrl('api/account/getProfile'), null, {
-                                    getProfile: {
-                                        url: serviceHelper.buildUrl("api/Account/getProfile"),
-                                        method: 'get'
+                            });
+                            var data = resource.getProfile();
+                            return data.$promise;
+                        }]
+                    }
+                })
+                .state('settings.contact', {
+                    url: '/contact',
+                    templateUrl: 'js/users/user.contact.html',
+                    controller: 'UserSettingController',
+                    resolve: {
+                        deps: ['$ocLazyLoad',
+                            function($ocLazyLoad) {
+                                return $ocLazyLoad.load('angularFileUpload').then(
+                                    function() {
+                                        return $ocLazyLoad.load([
+                                            'js/users/user.service.js',
+                                            'js/users/user.setting.controller.js'
+                                        ]);
                                     }
-                                });
-                                var data = resource.getProfile();
-                                return data.$promise;
-                            }]
-                        }
-                    })
+                                );
+                            }
+                        ],
+                        data: ['$resource', 'serviceHelperSvc', function($resource, serviceHelper) {
+                            var resource = $resource(serviceHelper.buildUrl('api/account/getProfile'), null, {
+                                getProfile: {
+                                    url: serviceHelper.buildUrl("api/Account/getProfile"),
+                                    method: 'get'
+                                }
+                            });
+                            var data = resource.getProfile();
+                            return data.$promise;
+                        }]
+                    }
+                })
+                .state('settings.changePassword', {
+                    url: '/changePassword',
+                    templateUrl: 'js/users/user.changePassword.html',
+                    controller: 'UserSettingController',
+                    resolve: {
+                        deps: ['$ocLazyLoad',
+                            function($ocLazyLoad) {
+                                return $ocLazyLoad.load('angularFileUpload').then(
+                                    function() {
+                                        return $ocLazyLoad.load([
+                                            'js/users/user.service.js',
+                                            'js/users/user.setting.controller.js'
+                                        ]);
+                                    }
+                                );
+                            }
+                        ],
+                        data: ['$resource', 'serviceHelperSvc', function($resource, serviceHelper) {
+                            var resource = $resource(serviceHelper.buildUrl('api/account/getProfile'), null, {
+                                getProfile: {
+                                    url: serviceHelper.buildUrl("api/Account/getProfile"),
+                                    method: 'get'
+                                }
+                            });
+                            var data = resource.getProfile();
+                            return data.$promise;
+                        }]
+                    }
+                })
             }
         ]
     );

@@ -1,6 +1,6 @@
 {
     "notification": {
-        "update_success_title": "Update successful"
+        "update_success": "Update successful"
     },
     "header": {
         "navbar": {
@@ -97,8 +97,12 @@
         "street": "Street",
         "address": "Address",
         "about": "About",
+        "old_password": "Old Password",
+        "new_password": "New Password",
+        "confirm_password": "Confirm Password",
         "messages":{
-            "setting_success_content": "Your contact has been successfully updated."
+            "update_title_succ": "Your contact has been successfully updated.",
+            "change_avatar_succ": "Your profile picture has been successfully changed."
         }
     },
     "button": {

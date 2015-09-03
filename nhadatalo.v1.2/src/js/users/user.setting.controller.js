@@ -1,13 +1,40 @@
-app.controller('UserSettingController', ['$scope', '$http', '$filter','toaster', '$translate', 'userService', 'userProfileService','FileUploader', 'data', 
-	function($scope, $http, $filter ,toaster ,translate, userService, userProfileService, FileUploader, data) {
+app.controller('UserSettingController', 
+    ['$scope', '$http', '$filter','toaster', '$translate', 'localStorageService', 'userService', 'userProfileService','FileUploader', 'data', 
+	function($scope, $http, $filter ,toaster ,translate, localStorageService, userService, userProfileService, FileUploader, data) {
 	
 
 	//VARIABLES
     var self = $scope;
     self.user = data;
+
+    var authData = localStorageService.get('authorizationData');
+    
     var uploader = $scope.uploader = new FileUploader({
-        url: 'js/controllers/upload.php'
+        url: userService.uploadFile,
+        headers: {'Authorization': 'Bearer ' + authData.token}
     });
+
+    uploader.onBeforeUploadItem = function(item) {
+        var fileName = item.file.name;
+        var fileUploadObj = {
+            Title: self.user.first_name,
+            FileName: fileName,
+            Description: "description",
+            PictureType: "Avatar",
+            OrderNumber: 1,
+            RefType: "User",
+            RefId: 1
+        };
+        item.formData = [fileUploadObj];
+    };
+
+    uploader.onSuccessItem = function(item, response, status, headers) {
+        toaster.pop('success', 
+            translate.instant('notification.update_success'), 
+            translate.instant('user.messages.change_avatar_succ'));
+    };
+   
+
 
     //END VARIABLES
 
@@ -34,25 +61,60 @@ app.controller('UserSettingController', ['$scope', '$http', '$filter','toaster',
     	req.$promise.then(
     		function(rep){
     			angular.element('.butterbar').addClass('hide').removeClass('active');
-	    		toaster.pop('success', translate.instant('notification.update_success_title'), translate.instant('user.messages.setting_success_content'));
-	    	}, 
-	    	function(rep){
-	    		angular.element('.butterbar').addClass('hide').removeClass('active');
-	    		var errors = "";
-	    		var modelState = rep.data.ModelState;
-	    		if (modelState) {
-	    			for (var key in modelState) {
+        		toaster.pop('success', translate.instant('notification.update_success'), translate.instant('user.messages.setting_success_content'));
+        	}, 
+        	function(rep){
+        		angular.element('.butterbar').addClass('hide').removeClass('active');
+        		var errors = "";
+        		var modelState = rep.data.ModelState;
+        		if (modelState) {
+        			for (var key in modelState) {
                         for (var i = 0; i < modelState[key].length; i++) {
                             errors+= modelState[key][i]+" ";
                         }
                     }
-	    			toaster.pop('error', "Error", errors);
-	    		}
-	    		else{
-	    			toaster.pop('error', "Error", rep.data.Message);
-	    		};
-	    	});
-    	
+        			toaster.pop('error', "Error", errors);
+        		}
+        		else{
+        			toaster.pop('error', "Error", rep.data.Message);
+        		};
+        	}
+        );
+    }
+
+    self.changePassword = function(){
+        angular.element('.butterbar').removeClass('hide').addClass('active');
+        var model = {
+            OldPassword:self.user.OldPassword,
+            NewPassword:self.user.NewPassword,
+            ConfirmPassword:self.user.ConfirmPassword,
+
+        }
+        var req = userService.changePassword(model);
+        
+
+        req.$promise.then(
+            function(rep){
+                angular.element('.butterbar').addClass('hide').removeClass('active');
+                toaster.pop('success', translate.instant('notification.update_success'), translate.instant('user.messages.setting_success_content'));
+            }, 
+            function(rep){
+                angular.element('.butterbar').addClass('hide').removeClass('active');
+                var errors = "";
+                var modelState = rep.data.ModelState;
+                if (modelState) {
+                    for (var key in modelState) {
+                        for (var i = 0; i < modelState[key].length; i++) {
+                            errors+= modelState[key][i]+" ";
+                        }
+                    }
+                    toaster.pop('error', "Error", errors);
+                }
+                else{
+                    toaster.pop('error', "Error", rep.data.Message);
+                };
+            }
+        );
     }
 	//END PUBLIC FUNCTIONS
 

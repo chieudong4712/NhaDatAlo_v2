@@ -25,6 +25,7 @@ namespace ResourceMetadata.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
 
         //public DbSet<User> Users { get; set; }
 

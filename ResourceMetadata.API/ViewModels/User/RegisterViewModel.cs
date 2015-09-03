@@ -21,8 +21,7 @@ namespace ResourceMetadata.API.ViewModels
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Password and confirm password should match")]
-
         public string ConfirmPassword { get; set; }
-       public LoginActions Action { get; set; }
+        public LoginActions Action { get; set; }
     }
 }

@@ -7,6 +7,8 @@ app.factory('userService', ['$http', '$resource', '$q', 'serviceHelperSvc', func
         updateProfile :  "api/Account/updateProfile",
         getProfile: "api/Account/getProfile",
         serviceUrl :  "api/Account",
+        changePasswordUrl: "api/Account/ChangePassword",
+
     }
 
 
@@ -31,6 +33,10 @@ app.factory('userService', ['$http', '$resource', '$q', 'serviceHelperSvc', func
             getProfile: {
                 url: serviceHelper.buildUrl(urls.getProfile), 
                 method: 'get'
+            },
+            changePassword: {
+                url: serviceHelper.buildUrl(urls.changePasswordUrl), 
+                method: 'post'
             }
         });
         
@@ -47,6 +53,12 @@ app.factory('userService', ['$http', '$resource', '$q', 'serviceHelperSvc', func
     service.getProfile = function () {
         return resource.getProfile();
     };
+
+    service.changePassword = function (model) {
+        return resource.changePassword(model);
+    };
+
+    service.uploadFile = serviceHelper.buildUrl("api/files/Upload");
     
     //END METHODS
 

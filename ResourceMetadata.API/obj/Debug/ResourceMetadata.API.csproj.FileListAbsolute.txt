@@ -166,3 +166,5 @@ D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.API\bin\System.Web.Http.Owin.xml
 D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.API\obj\Debug\ResourceMetadata.API.csprojResolveAssemblyReference.cache
 D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.API\obj\Debug\ResourceMetadata.API.dll
 D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.API\obj\Debug\ResourceMetadata.API.pdb
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.API\bin\Renci.SshNet.dll
+D:\SOURCETREE\NhaDatAlo_v2\ResourceMetadata.API\bin\Renci.SshNet.xml

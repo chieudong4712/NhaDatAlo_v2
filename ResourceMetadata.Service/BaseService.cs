@@ -66,20 +66,20 @@ namespace ResourceMetadata.Service
             return repository.GetById(id);
         }
 
-        public T Add(T setting)
+        public T Add(T t)
         {
-            repository.Add(setting);
+            repository.Add(t);
             unitOfWork.SaveChanges();
-            return setting;
+            return t;
         }
 
-        public T Update(T setting)
+        public T Update(T t)
         {
             try
             {
-                repository.Update(setting);
+                repository.Update(t);
                 unitOfWork.SaveChanges();
-                return setting;
+                return t;
             }
             catch (Exception ex)
             {
@@ -90,8 +90,8 @@ namespace ResourceMetadata.Service
 
         public void Delete(long id)
         {
-            var setting = repository.GetById(id);
-            repository.Delete(setting);
+            var t = repository.GetById(id);
+            repository.Delete(t);
             unitOfWork.SaveChanges();
         }
 

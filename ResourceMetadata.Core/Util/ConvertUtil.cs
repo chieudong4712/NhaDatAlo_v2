@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 using ResourceMetadata.Core.ComponentModel;
+using System.Collections.Specialized;
 
 namespace ResourceMetadata.Core.Util
 {
@@ -125,6 +126,32 @@ namespace ResourceMetadata.Core.Util
             return TypeDescriptor.GetConverter(type);
         }
 
+        public static Dictionary<string, object> NameValueCollectionToDictionary(NameValueCollection nvc, bool handleMultipleValuesPerKey)
+        {
+            var result = new Dictionary<string, object>();
+            foreach (string key in nvc.Keys)
+            {
+                if (handleMultipleValuesPerKey)
+                {
+                    string[] values = nvc.GetValues(key);
+                    if (values.Length == 1)
+                    {
+                        result.Add(key, values[0]);
+                    }
+                    else
+                    {
+                        result.Add(key, values);
+                    }
+                }
+                else
+                {
+                    result.Add(key, nvc[key]);
+                }
+            }
+
+            return result;
+        }
+
         #region To
         /// <summary>
         /// Converts a value to a destination type.
@@ -175,6 +202,37 @@ namespace ResourceMetadata.Core.Util
         {
             //return (T)Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
             return (T)To(value, typeof(T));
+        }
+
+        /// <summary>
+        /// Convert a namevaluecollection to T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <returns></returns>
+        public static T To<T>(NameValueCollection collection) where T : class, new()
+        {
+            T t = new T();
+
+            foreach (string kvp in collection.AllKeys)
+            {
+                PropertyInfo pi = t.GetType().GetProperty(kvp, BindingFlags.Public | BindingFlags.Instance);
+                if (pi != null)
+                {
+                    pi.SetValue(t, collection[kvp], null);
+                }
+            }
+
+            //foreach (KeyValuePair<string, object> kvp in collection)
+            //{
+            //    PropertyInfo pi = t.GetType().GetProperty(kvp.Key, BindingFlags.Public | BindingFlags.Instance);
+            //    if (pi != null)
+            //    {
+            //        pi.SetValue(t, kvp.Value, null);
+            //    }
+            //}
+            return t;
+            
         }
         #endregion
 
