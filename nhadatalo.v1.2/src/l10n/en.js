@@ -102,7 +102,9 @@
         "confirm_password": "Confirm Password",
         "messages":{
             "update_title_succ": "Your contact has been successfully updated.",
-            "change_avatar_succ": "Your profile picture has been successfully changed."
+            "update_profile_succ": "Your profile has been successfully updated.",
+            "change_avatar_succ": "Your profile picture has been successfully changed.",
+            "change_password_succ": "Your password has been successfully changed."
         }
     },
     "button": {

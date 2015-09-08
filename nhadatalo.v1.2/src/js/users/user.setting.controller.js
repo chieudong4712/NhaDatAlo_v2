@@ -1,11 +1,16 @@
 app.controller('UserSettingController', 
-    ['$scope', '$http', '$filter','toaster', '$translate', 'localStorageService', 'userService', 'userProfileService','FileUploader', 'data', 
-	function($scope, $http, $filter ,toaster ,translate, localStorageService, userService, userProfileService, FileUploader, data) {
+    ['$scope', '$http', '$filter','toaster', '$translate', 'localStorageService', 'userService', 'userProfileService','FileUploader', 'data', 'USER', 
+	function($scope, $http, $filter ,toaster ,translate, localStorageService, userService, userProfileService, FileUploader, data, USER) {
 	
 
 	//VARIABLES
     var self = $scope;
     self.user = data;
+    self.defaultAvatar = USER.DEFAULT_AVATAR;
+    
+    //END VARIABLES
+
+    // UPLOAD
 
     var authData = localStorageService.get('authorizationData');
     
@@ -13,8 +18,10 @@ app.controller('UserSettingController',
         url: userService.uploadFile,
         headers: {'Authorization': 'Bearer ' + authData.token}
     });
+    
 
     uploader.onBeforeUploadItem = function(item) {
+        angular.element('.butterbar').removeClass('hide').addClass('active');
         var fileName = item.file.name;
         var fileUploadObj = {
             Title: self.user.first_name,
@@ -28,31 +35,66 @@ app.controller('UserSettingController',
         item.formData = [fileUploadObj];
     };
 
+
     uploader.onSuccessItem = function(item, response, status, headers) {
-        toaster.pop('success', 
-            translate.instant('notification.update_success'), 
-            translate.instant('user.messages.change_avatar_succ'));
+        self.user.Avatar = 'Images/Avatar/medium/'+ response.fileName;
+        self.user.Avatar = response.fileName;
+        angular.element('.butterbar').addClass('hide').removeClass('active');
+
+        //change pic
+        self.changeAvatar();
+        // toaster.pop('success', 
+        //     translate.instant('notification.update_success'), 
+        //     translate.instant('user.messages.change_avatar_succ'));
     };
-   
 
-
-    //END VARIABLES
-
-    // FILTERS
+    uploader.onAfterAddingFile = function(item) {
+        item.upload();
+    };
 
     uploader.filters.push({
         name: 'customFilter',
         fn: function(item /*{File|FileLikeObject}*/, options) {
-            return this.queue.length < 10;
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
         }
     });
-    // END FILTERS
 
-    //PUBLIC FUNCTIONS
-   	
     self.upload = function(){
         uploader.uploadAll();
     };
+    // END UPLOAD
+
+    //PUBLIC FUNCTIONS
+   	self.changeAvatar = function(){
+        angular.element('.butterbar').removeClass('hide').addClass('active');
+        var req = userService.changeAvatar({avatar: self.user.Avatar});
+        
+
+        req.$promise.then(
+            function(rep){
+                angular.element('.butterbar').addClass('hide').removeClass('active');
+                toaster.pop('success', translate.instant('notification.update_success'), translate.instant('user.messages.change_avatar_succ'));
+            }, 
+            function(rep){
+                angular.element('.butterbar').addClass('hide').removeClass('active');
+                var errors = "";
+                var modelState = rep.data.ModelState;
+                if (modelState) {
+                    for (var key in modelState) {
+                        for (var i = 0; i < modelState[key].length; i++) {
+                            errors+= modelState[key][i]+" ";
+                        }
+                    }
+                    toaster.pop('error', "Error", errors);
+                }
+                else{
+                    toaster.pop('error', "Error", rep.data.Message);
+                };
+            }
+        );
+    }
+    
     self.save = function(){
     	angular.element('.butterbar').removeClass('hide').addClass('active');
     	var req = userService.updateProfile(self.user);
@@ -61,7 +103,7 @@ app.controller('UserSettingController',
     	req.$promise.then(
     		function(rep){
     			angular.element('.butterbar').addClass('hide').removeClass('active');
-        		toaster.pop('success', translate.instant('notification.update_success'), translate.instant('user.messages.setting_success_content'));
+        		toaster.pop('success', translate.instant('notification.update_success'), translate.instant('user.messages.update_profile_succ'));
         	}, 
         	function(rep){
         		angular.element('.butterbar').addClass('hide').removeClass('active');
@@ -96,7 +138,7 @@ app.controller('UserSettingController',
         req.$promise.then(
             function(rep){
                 angular.element('.butterbar').addClass('hide').removeClass('active');
-                toaster.pop('success', translate.instant('notification.update_success'), translate.instant('user.messages.setting_success_content'));
+                toaster.pop('success', translate.instant('notification.update_success'), translate.instant('user.messages.change_password_succ'));
             }, 
             function(rep){
                 angular.element('.butterbar').addClass('hide').removeClass('active');

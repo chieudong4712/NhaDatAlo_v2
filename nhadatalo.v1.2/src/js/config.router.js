@@ -838,6 +838,7 @@ angular.module('app')
                                 return $ocLazyLoad.load('angularFileUpload').then(
                                     function() {
                                         return $ocLazyLoad.load([
+                                            'js/users/user.constant.js',
                                             'js/users/user.service.js',
                                             'js/users/user.setting.controller.js'
                                         ]);

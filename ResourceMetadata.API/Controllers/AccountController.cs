@@ -116,32 +116,23 @@ namespace ResourceMetadata.API.Controllers
             
         }
 
+
+
+
         [HttpPost]
-        [Route("api/Account/ChangePassword")]
-        public IHttpActionResult ChangePassword(ChangePasswordModel model)
+        [Route("api/Account/ChangeAvatar")]
+        public IHttpActionResult ChangeAvatar(ChangeAvatarModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     string userEmail = RequestContext.Principal.Identity.Name;
-                    var userId = RequestContext.Principal.Identity.GetUserId();
-                    var identityResult = userManager.ChangePassword(userId, model.OldPassword, model.NewPassword);
+                    var user = userManager.FindByName(userEmail);
+                    user.Avatar = model.Avatar;
 
-
-                    if (identityResult.Succeeded)
-                    {
-                        return Ok();
-                    }
-                    else
-                    {
-                        foreach (var error in identityResult.Errors)
-                        {
-                            ModelState.AddModelError(error, error);
-                        }
-
-                        return BadRequest(ModelState);
-                    }
+                    userManager.Update(user);
+                    return Ok();
                 }
                 catch (Exception ex)
                 {
@@ -151,11 +142,36 @@ namespace ResourceMetadata.API.Controllers
             }
             else
             {
-                return BadRequest(ModelState);
+                return BadRequest("Please reupload your avatar");
             }
+        } 
 
-            
-            
+
+        [HttpPost]
+        [Route("api/Account/ChangeAvatar/{avatar}")]
+        public IHttpActionResult ChangeAvatar(string avatar)
+        {
+            if (!String.IsNullOrEmpty(avatar))
+            {
+                try
+                {
+                    string userEmail = RequestContext.Principal.Identity.Name;
+                    var user = userManager.FindByName(userEmail);
+                    user.Avatar = avatar;
+
+                    userManager.Update(user);
+                    return Ok();
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+            else
+            {
+                return BadRequest("Please reupload your avatar");
+            }
 
         } 
         #endregion

@@ -87,16 +87,14 @@ namespace ResourceMetadata.API.Controllers
             // creation time, directory name, a few filesystem methods etc..
             var uploadedFileInfo = new FileInfo(result.FileData.First().LocalFileName);
 
-            // Remove this line as well as GetFormData method if you're not
-            // sending any form data with your upload request
+            // Save Picture
             var fileUploadObj = GetFormData(result);
-
             fileUploadObj.FileName = fileName;
-
             var picture = new Picture();
             picture = Mapper.Map(fileUploadObj, picture);
             pictureService.Add(picture);
 
+            // Save file
             string saveFolder = HttpContext.Current.Server.MapPath("~/Images/" + fileUploadObj.PictureType + "/" + PictureSize.Auto + "/");
             string filePath = Path.Combine(saveFolder, fileName);
             if (!Directory.Exists(saveFolder))
@@ -110,8 +108,7 @@ namespace ResourceMetadata.API.Controllers
             // Through the request response you can return an object to the Angular controller
             // You will be able to access this in the .success callback through its data attribute
             // If you want to send something to the .error callback, use the HttpStatusCode.BadRequest instead
-            var returnData = "ReturnTest";
-            return this.Request.CreateResponse(HttpStatusCode.OK, new { returnData });
+            return this.Request.CreateResponse(HttpStatusCode.OK, new { fileName });
         }
 
         // You could extract these two private methods to a separate utility class since

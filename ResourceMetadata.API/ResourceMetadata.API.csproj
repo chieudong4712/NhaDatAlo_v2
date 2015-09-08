@@ -219,6 +219,7 @@
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\PagedCollectionViewModel.cs" />
+    <Compile Include="ViewModels\User\ChangeAvatarModel.cs" />
     <Compile Include="ViewModels\User\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResourceActivityViewModel.cs" />
     <Compile Include="ViewModels\ResourceViewModel.cs" />
