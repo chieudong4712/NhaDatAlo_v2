@@ -1,0 +1,227 @@
+<div class="panel panel-default">
+  <div class="panel-heading font-bold" translate="profile.addProduct.addProductTitle">
+    Form elements
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" method="get">
+     
+      <div class="form-group">
+        <label class="col-sm-2 control-label" translate="profile.addProduct.name">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control">
+          <span class="help-block m-b-none" translate="profile.addProduct.descName">Input your product name</span>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg pull-in"></div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" translate="profile.addProduct.price">Price</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg pull-in"></div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Wysiwyg</label>
+        <div class="col-sm-10">
+          <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
+            <div class="btn-group dropdown" dropdown>
+              <a class="btn btn-default" dropdown-toggle tooltip="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li> 
+                <li><a href data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
+                <li><a href data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
+            </div>
+            <div class="btn-group dropdown" dropdown>
+              <a class="btn btn-default" dropdown-toggle data-toggle="dropdown" tooltip="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
+                <li><a href data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
+                <li><a href data-edit="fontSize 1" style="font-size:14px">Small</a></li>
+              </ul>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+              <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+              <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+              <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa fa-list-ul"></i></a>
+              <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa fa-list-ol"></i></a>
+              <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+              <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa fa-indent"></i></a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-default" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+              <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+              <a class="btn btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+              <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+            </div>
+            <div class="btn-group dropdown" dropdown>
+              <a class="btn btn-default" dropdown-toggle tooltip="Hyperlink"><i class="fa fa-link"></i></a>
+              <div class="dropdown-menu">
+                <div class="input-group m-l-xs m-r-xs">
+                  <input class="form-control input-sm" id="LinkInput" placeholder="URL" type="text" data-edit="createLink"/>
+                  <div class="input-group-btn">
+                    <button class="btn btn-sm btn-default" type="button">Add</button>
+                  </div>
+                </div>
+              </div>
+              <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+            </div>
+            
+            <div class="btn-group">
+              <a class="btn btn-default" tooltip="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+              <input type="file" data-edit="insertImage" style="position:absolute; opacity:0; width:41px; height:34px" />
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+              <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+            </div>
+          </div>
+          <div ui-jq="wysiwyg" class="form-control" style="overflow:scroll;height:200px;max-height:200px">
+            Go ahead&hellip;
+          </div>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg pull-in"></div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" translate="profile.addProduct.picture">Picture</label>
+        <div class="col-sm-10" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+          <div class="media">
+            <div class="media-left">
+              <img ng-show="user.Avatar" class="pull-left" ng-src="http://localhost:7818/Images/Avatar/medium/{{user.Avatar}}" />
+              <img ng-show="!user.Avatar" class="pull-left" ng-src="http://localhost:7818/Images/Avatar/{{defaultAvatar}}" />
+            </div>
+            <div class="media-body">
+              <input ng-model="user.Avatar" nv-file-select="" uploader="uploader" ng-change="upload()" ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg pull-in"></div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" translate="profile.addProduct.category">Category</label>
+        <div class="col-sm-10">
+          <select ui-jq="chosen" class="w-md">
+              <optgroup label="Alaskan/Hawaiian Time Zone">
+                  <option value="AK">Alaska</option>
+                  <option value="HI">Hawaii</option>
+              </optgroup>
+              <optgroup label="Pacific Time Zone">
+                  <option value="CA">California</option>
+                  <option value="NV">Nevada</option>
+                  <option value="OR">Oregon</option>
+                  <option value="WA">Washington</option>
+              </optgroup>
+              <optgroup label="Mountain Time Zone">
+                  <option value="AZ">Arizona</option>
+                  <option value="CO">Colorado</option>
+                  <option value="ID">Idaho</option>
+                  <option value="MT">Montana</option><option value="NE">Nebraska</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="UT">Utah</option>
+                  <option value="WY">Wyoming</option>
+              </optgroup>
+              <optgroup label="Central Time Zone">
+                  <option value="AL">Alabama</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TX">Texas</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="WI">Wisconsin</option>
+              </optgroup>
+              <optgroup label="Eastern Time Zone">
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="IN">Indiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="NH">New Hampshire</option><option value="NJ">New Jersey</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="OH">Ohio</option>
+                  <option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option>
+                  <option value="VT">Vermont</option><option value="VA">Virginia</option>
+                  <option value="WV">West Virginia</option>
+              </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="line line-dashed b-b line-lg pull-in"></div>
+      <div class="form-group">
+        <label class="col-lg-2 control-label" translate="profile.addProduct.productCode">Product Code</label>
+        <div class="col-lg-4">
+          <input type="text" class="form-control">
+        </div>
+        <label class="col-lg-2 control-label" translate="profile.addProduct.barCode">Bar Code</label>
+        <div class="col-lg-4">
+          <input type="text" class="form-control">
+        </div>
+      </div>                    
+      <div class="line line-dashed b-b line-lg pull-in"></div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" translate="profile.addProduct.property">Property</label>
+        <div class="col-sm-10">
+          <input ui-jq="tagsinput" ui-options="" class="form-control w-md" />
+        </div>
+      </div>
+
+      <div class="line line-dashed b-b line-lg pull-in"></div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Display</label>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="radio">
+                <label class="i-checks">
+                  <input type="radio" name="a" value="option1">
+                  <i></i>
+                  Option one
+                </label>
+              </div>
+              <div class="radio">
+                <label class="i-checks">
+                  <input type="radio" name="a" value="option2" checked>
+                  <i></i>
+                  Option two checked
+                </label>
+              </div>
+            
+            </div>
+            <div class="col-sm-6">
+              <div class="input-group w-md">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="line line-dashed b-b line-lg pull-in"></div>
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+          <button type="submit" class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

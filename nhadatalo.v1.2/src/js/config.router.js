@@ -17,7 +17,7 @@ angular.module('app')
             function($stateProvider, $urlRouterProvider, JQ_CONFIG) {
 
                 $urlRouterProvider
-                    .otherwise('/app/dashboard-v1');
+                    .otherwise('/home/fullwidth');
                 $stateProvider
                     .state('app', {
                         abstract: true,
@@ -501,9 +501,9 @@ angular.module('app')
                         url: '/compose',
                         templateUrl: 'tpl/mail.new.html'
                     })
+                
                     //Management
-
-                .state('management', {
+                    .state('management', {
                         abstract: true,
                         url: '/management',
                         templateUrl: 'tpl/app.html'
@@ -815,7 +815,7 @@ angular.module('app')
                         templateUrl: 'tpl/music.playlist.html'
                     })
 
-                //Layout ================================================================================
+                //User Setting ================================================================================
                 .state('settings', {
                     abstract: true,
                     url: '/settings',
@@ -915,6 +915,52 @@ angular.module('app')
                             return data.$promise;
                         }]
                     }
+                })
+                // Home =========================================================================================
+                .state('home', {
+                        abstract: true,
+                        url: '/home',
+                        templateUrl: 'tpl/layout_home.html'
+                    })
+                .state('home.fullwidth',{
+                    url: '/fullwidth',
+                    views: {
+                        '': {
+                            templateUrl: 'js/home/home.html'
+                        },
+                        'footer': {
+                            templateUrl: 'tpl/layout_footer_fullwidth.html'
+                        }
+                    },
+                    resolve: {
+                        deps: ['uiLoad',
+                            function(uiLoad) {
+                                return uiLoad.load(['js/controllers/vectormap.js']);
+                            }
+                        ]
+                    }
+                })
+
+                //PROFILE ========================================================================================
+                .state('home.profile', {
+                    url: '/profile',
+                    templateUrl: 'js/profile/profile.template.html'
+                })
+                .state('home.profile.stream', {
+                    url: '/stream',
+                    templateUrl: 'js/profile/stream.html'
+                })
+                .state('home.profile.products', {
+                    url: '/products',
+                    templateUrl: 'js/profile/products.html'
+                })
+                .state('home.profile.collections', {
+                    url: '/collections',
+                    templateUrl: 'js/profile/collections.html'
+                })
+                .state('home.profile.addProduct', {
+                    url: '/add-product',
+                    templateUrl: 'js/profile/add_product.html'
                 })
             }
         ]

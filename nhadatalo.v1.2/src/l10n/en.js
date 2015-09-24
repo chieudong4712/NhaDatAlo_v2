@@ -2,6 +2,13 @@
     "notification": {
         "update_success": "Update successful"
     },
+    "button": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "add": "Add",
+        "update": "Update",
+        "delete": "Delete"
+    },
     "header": {
         "navbar": {
             "UPLOAD": "Upload",
@@ -107,12 +114,26 @@
             "change_password_succ": "Your password has been successfully changed."
         }
     },
-    "button": {
-        "save": "Save",
-        "cancel": "Cancel",
-        "add": "Add",
-        "update": "Update",
-        "delete": "Delete"
+    "profile": {
+        "nav": {
+            "stream": "Stream",
+            "collections": "Collections",
+            "products": "Products",
+            "addProduct": "Add Product"
+        },
+        "addProduct": {
+            "addProductTitle": "Add Product",
+            "name": "Name",
+            "descName": "Input your product name. Example: Nokia Lumia, SamsungS4",
+            "price": "Price",
+            "desc": "Description",
+            "picture": "Picture",
+            "category": "Category", 
+            "productCode": "Product Code",
+            "barCode": "Bar Code",
+            "property": "Property"
+        }
     }
+    
 
 }

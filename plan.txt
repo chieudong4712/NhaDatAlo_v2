@@ -1,0 +1,25 @@
+User
+- Sản phẩm
+	+ tìm sản phẩm
+	+ Giá cả
+	+ Vị trí
+	+ Shipping
+	+ Máy tính: Dung lượng pin, OS, Hãng v.v...
+	+ Categories
+	
+- Nhà cung cấp
+	+ Quản lý đơn hàng, giao dịch
+	+ Vote
+	+ Liên hệ
+
+- Tác động
+	+ Comment
+	+ Vote
+- hướng sản phẩm
+
+
+* Tham khảo
+https://www.google.com/shopping
+http://www.shopzilla.com/
+http://www.pricegrabber.com/
+http://www.nextag.com/iphone/products-html

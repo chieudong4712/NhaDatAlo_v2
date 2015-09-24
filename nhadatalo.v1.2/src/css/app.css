@@ -4943,7 +4943,7 @@ a.text-#000000:hover {
 
 /*desktop*/
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1200px) {
   .col-lg-2-4 {
     float: left;
     width: 20.000%;
